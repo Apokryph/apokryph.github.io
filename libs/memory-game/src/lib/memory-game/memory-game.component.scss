@@ -2,16 +2,22 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
 
   .row {
     display: flex;
+    width: 100%;
+
+    @media screen and (min-width: 1000px) {
+      width: 50%;
+    }
 
     .card {
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      box-shadow: rgba(50, 50, 93, 0.25) 0 2px 5px -1px,
         rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-      width: 100px;
-      height: 100px;
-      margin: 5px;
+      max-width: calc(25%);
+      min-width: calc(25%);
+      aspect-ratio: 1/1;
       cursor: pointer;
       perspective: 1000px;
       transform-style: preserve-3d;

@@ -1,11 +1,10 @@
-<a [routerLink]="'/'">Zurück zur Übersicht</a>
 <div class="game-board">
-  <div *ngFor="let row of gameBoard" class="row">
+  <div *ngFor="let row of gameService.gameBoard" class="row">
     <div
       *ngFor="let card of row"
       class="card"
       [class.flipped]="card.flipped"
-      (click)="flipCard(card)"
+      (click)="gameService.flipCard(card)"
     >
       <div class="card__content position--absolute">
         <img
@@ -27,3 +26,21 @@
     </div>
   </div>
 </div>
+
+<p-dialog
+  header="Spiel gewonnen! Hurra!!!"
+  [(visible)]="gameService.gameEnded"
+  [style]="{ width: '60vw' }"
+  [breakpoints]="{ '960px': '80vw' }"
+  [draggable]="false"
+  [resizable]="false"
+  [position]="'top'"
+>
+  <p>
+    Herzlichen Glückwunsch! Du hast {{ gameService.steps }} Züge benötigt. Jetzt
+    kannst du es noch einmal versuchen:
+  </p>
+  <ng-template pTemplate="footer">
+    <p-button label="Neues Spiel" (onClick)="startGame()"></p-button>
+  </ng-template>
+</p-dialog>
