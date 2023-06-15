@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fad72a3d-ef62-4277-a517-844c7e118d86" name="Changes" comment="- added package-lock.json">
-      <change afterPath="$PROJECT_DIR$/libs/memory-game/src/lib/models/Card.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/memory-game/src/lib/services/memory-game.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/memory-game/src/lib/services/memory-game.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/shell/project.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/shell/project.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/shell/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/shell/src/app/app.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/shell/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/shell/src/styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/memory-game/src/lib/memory-game/memory-game.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/libs/memory-game/src/lib/memory-game/memory-game.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/memory-game/src/lib/memory-game/memory-game.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/libs/memory-game/src/lib/memory-game/memory-game.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/memory-game/src/lib/memory-game/memory-game.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/libs/memory-game/src/lib/memory-game/memory-game.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="fad72a3d-ef62-4277-a517-844c7e118d86" name="Changes" comment="- added styling for game&#10;- added dialog for winning&#10;- added step counting&#10;- added dist folder for deploying" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,7 +78,7 @@
       <workItem from="1686854987952" duration="495000" />
       <workItem from="1686855675038" duration="517000" />
       <workItem from="1686856214757" duration="20000" />
-      <workItem from="1686856263994" duration="8327000" />
+      <workItem from="1686856263994" duration="8602000" />
     </task>
     <task id="LOCAL-00001" summary="- init nx workspace&#10;- added memory game (wip)">
       <created>1686854596892</created>
@@ -115,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686856632366</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="- added styling for game&#10;- added dialog for winning&#10;- added step counting&#10;- added dist folder for deploying">
+      <created>1686864829490</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686864829490</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,7 +128,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- init nx workspace&#10;- added memory game (wip)" />
     <MESSAGE value="- added package-lock.json" />
-    <option name="LAST_COMMIT_MESSAGE" value="- added package-lock.json" />
+    <MESSAGE value="- added styling for game&#10;- added dialog for winning&#10;- added step counting&#10;- added dist folder for deploying" />
+    <option name="LAST_COMMIT_MESSAGE" value="- added styling for game&#10;- added dialog for winning&#10;- added step counting&#10;- added dist folder for deploying" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
