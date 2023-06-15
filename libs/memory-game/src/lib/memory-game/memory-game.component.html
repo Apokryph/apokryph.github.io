@@ -1,0 +1,29 @@
+<a [routerLink]="'/'">Zurück zur Übersicht</a>
+<div class="game-board">
+  <div *ngFor="let row of gameBoard" class="row">
+    <div
+      *ngFor="let card of row"
+      class="card"
+      [class.flipped]="card.flipped"
+      (click)="flipCard(card)"
+    >
+      <div class="card__content position--absolute">
+        <img
+          class="card__content--front position--absolute"
+          [ngSrc]="card.content"
+          height="100"
+          width="100"
+          [alt]="card.content"
+        />
+        <img
+          class="card__content--back position--absolute"
+          [ngSrc]="'assets/memory-game/angular_bg.svg'"
+          height="100"
+          width="100"
+          [alt]="'Kartenrückseite'"
+          priority
+        />
+      </div>
+    </div>
+  </div>
+</div>
