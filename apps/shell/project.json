@@ -12,7 +12,7 @@
         "{options.outputPath}"
       ],
       "options": {
-        "baseHref": "https://apokryph.github.io/",
+        "baseHref": "/",
         "outputPath": "docs",
         "index": "apps/shell/src/index.html",
         "main": "apps/shell/src/main.ts",
