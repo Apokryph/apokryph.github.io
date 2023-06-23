@@ -7,6 +7,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { Game, HighscoreService } from '@apo/gamification';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'apo-memory-game',
@@ -39,6 +40,17 @@ export class MemoryGameComponent {
     public readonly highscoreService: HighscoreService
   ) {
     this.startGame();
+
+    this.gameService.hasGameEnded$
+      .pipe(first())
+      .subscribe(() =>
+        this.highscoreService.showEndDialog(
+          Game.Memory,
+          this.gameService.steps,
+          'Hurra! Du hast gewonnen!',
+          `Du konntest das Spiel mit ${gameService.steps} Zügen beenden.`
+        )
+      );
   }
 
   startGame() {
