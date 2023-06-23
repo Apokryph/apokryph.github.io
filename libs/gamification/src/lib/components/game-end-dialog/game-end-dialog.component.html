@@ -1,0 +1,33 @@
+<div class="flex flex-column gap-2 align-items-center">
+  <p>{{ dialogConfig.data?.content }}</p>
+
+  <p>
+    Wenn du auf der Bestenliste erscheinen willst, gib hier deine Daten ein:
+  </p>
+
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="highscoreForm"
+    class="flex flex-column gap-4 align-items-center"
+  >
+    <span class="p-float-label">
+      <input formControlName="name" id="name" pInputText type="text" />
+      <label for="name">Name</label>
+    </span>
+
+    <span class="p-float-label">
+      <input formControlName="note" id="note" pInputText type="text" />
+      <label for="note">Notiz (optional)</label>
+    </span>
+
+    <div class="flex align-items-center gap-3">
+      <label for="shouldSave">Daten in Bestenliste speichern</label>
+      <p-inputSwitch
+        formControlName="shouldSave"
+        id="shouldSave"
+      ></p-inputSwitch>
+    </div>
+
+    <p-button label="Neustart" type="submit"></p-button>
+  </form>
+</div>

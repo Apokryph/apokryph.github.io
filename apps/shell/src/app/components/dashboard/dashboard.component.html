@@ -1,4 +1,11 @@
 <h1>Games</h1>
+
+<p-button
+  label="Zur Bestenliste"
+  routerLink="/highscore-board"
+  styleClass="p-button-link"
+></p-button>
+
 <ul>
   <li *ngFor="let game of gameList" [routerLink]="game.link">
     {{ game.name }}

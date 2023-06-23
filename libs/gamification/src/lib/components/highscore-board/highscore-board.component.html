@@ -1,0 +1,22 @@
+<ng-template #loading>
+  <p-progressSpinner aria-label="Wird geladen."></p-progressSpinner>
+</ng-template>
+
+<div *ngIf="highscores$ | async as highscores; else loading">
+  <p-dataView [paginator]="true" [rows]="5" [value]="highscores">
+    <ng-template let-highscore let-rowIndex="rowIndex" pTemplate="listItem">
+      <div class="col-12">
+        <div class="flex flex-row p-4 justify-content-between">
+          <div>{{ rowIndex + 1 }}.</div>
+          <div class="flex flex-column align-items-center">
+            <div class="font-bold text-xl">{{ highscore.name }}</div>
+            <div *ngIf="highscore?.note" class="font-light">
+              "{{ highscore.note }}"
+            </div>
+          </div>
+          <div>{{ highscore.score }} Züge</div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+</div>

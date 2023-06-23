@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@apo/gamification": ["libs/gamification/src/index.ts"],
       "@apo/memory-game": ["libs/memory-game/src/index.ts"]
     }
   },

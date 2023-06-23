@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MemoryGameService } from '../services/memory-game.service';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { Game, HighscoreService } from '@apo/gamification';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'apo-memory-game',
@@ -16,7 +18,10 @@ import { ButtonModule } from 'primeng/button';
     RouterLink,
     DialogModule,
     ButtonModule,
+    RouterOutlet,
+    DynamicDialogModule,
   ],
+  providers: [MemoryGameService],
   templateUrl: './memory-game.component.html',
   styleUrls: ['./memory-game.component.scss'],
 })
@@ -25,9 +30,13 @@ export class MemoryGameComponent {
   columns = 4;
   cardSize = 8;
 
+  protected readonly history = history;
+  protected readonly Game = Game;
+
   constructor(
     public readonly gameService: MemoryGameService,
-    public readonly router: Router
+    public readonly router: Router,
+    public readonly highscoreService: HighscoreService
   ) {
     this.startGame();
   }

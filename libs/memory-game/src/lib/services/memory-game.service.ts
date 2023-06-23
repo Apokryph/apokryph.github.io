@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Card } from '../models/Card';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MemoryGameService {
   gameBoard: Card[][] = [];
-  gameEnded = false;
+  hasGameEnded$: Subject<boolean> = new Subject<boolean>();
   steps = 0;
 
   private cards: Card[] = [];
@@ -14,12 +15,49 @@ export class MemoryGameService {
   private matchedCards: Card[] = [];
 
   initializeGameBoard(rows: number, columns: number, cardSize: number): void {
+    this.hasGameEnded$.next(false);
+
     this.cards = this.createCards(cardSize);
     this.gameBoard = this.createGameBoard(rows, columns);
-    this.gameEnded = false;
     this.flippedCards = [];
     this.matchedCards = [];
     this.steps = 0;
+  }
+
+  flipCard(card: Card): void {
+    if (
+      !card.flipped &&
+      this.flippedCards.length < 2 &&
+      !this.matchedCards.includes(card)
+    ) {
+      card.flipped = true;
+      this.flippedCards.push(card);
+
+      if (this.flippedCards.length === 2) {
+        this.steps++; // Zähle einen Zug
+
+        if (this.flippedCards[0].content === this.flippedCards[1].content) {
+          // Karten stimmen überein
+          this.matchedCards.push(...this.flippedCards);
+          this.flippedCards = [];
+
+          // Überprüfe, ob alle Karten umgedreht wurden und das Spiel beendet ist
+          if (this.matchedCards.length === this.cards.length) {
+            setTimeout(() => {
+              this.hasGameEnded$.next(true);
+            }, 500);
+          }
+        } else {
+          // Karten stimmen nicht überein
+          setTimeout(() => {
+            this.flippedCards.forEach((flippedCard) => {
+              flippedCard.flipped = false;
+            });
+            this.flippedCards = [];
+          }, 1000);
+        }
+      }
+    }
   }
 
   private createCards(cardSize: number): Card[] {
@@ -62,41 +100,5 @@ export class MemoryGameService {
     }
 
     return gameBoard;
-  }
-
-  flipCard(card: Card): void {
-    if (
-      !card.flipped &&
-      this.flippedCards.length < 2 &&
-      !this.matchedCards.includes(card)
-    ) {
-      card.flipped = true;
-      this.flippedCards.push(card);
-
-      if (this.flippedCards.length === 2) {
-        this.steps++; // Zähle einen Zug
-
-        if (this.flippedCards[0].content === this.flippedCards[1].content) {
-          // Karten stimmen überein
-          this.matchedCards.push(...this.flippedCards);
-          this.flippedCards = [];
-
-          // Überprüfe, ob alle Karten umgedreht wurden und das Spiel beendet ist
-          if (this.matchedCards.length === this.cards.length) {
-            setTimeout(() => {
-              this.gameEnded = true;
-            }, 500);
-          }
-        } else {
-          // Karten stimmen nicht überein
-          setTimeout(() => {
-            this.flippedCards.forEach((flippedCard) => {
-              flippedCard.flipped = false;
-            });
-            this.flippedCards = [];
-          }, 1000);
-        }
-      }
-    }
   }
 }

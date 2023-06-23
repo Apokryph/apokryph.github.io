@@ -1,46 +1,48 @@
+<h2>Memory</h2>
+
+<p-button
+  label="Zum Dashboard"
+  routerLink="/"
+  styleClass="p-button-link"
+></p-button>
+
 <div class="game-board">
   <div *ngFor="let row of gameService.gameBoard" class="row">
     <div
-      *ngFor="let card of row"
-      class="card"
-      [class.flipped]="card.flipped"
       (click)="gameService.flipCard(card)"
+      *ngFor="let card of row"
+      [class.flipped]="card.flipped"
+      class="card"
     >
       <div class="card__content position--absolute">
         <img
-          class="card__content--front position--absolute"
+          [alt]="card.content"
           [ngSrc]="card.content"
+          class="card__content--front position--absolute"
           height="100"
           width="100"
-          [alt]="card.content"
         />
         <img
-          class="card__content--back position--absolute"
-          [ngSrc]="'assets/memory-game/angular_bg.svg'"
-          height="100"
-          width="100"
           [alt]="'Kartenrückseite'"
+          [ngSrc]="'assets/memory-game/angular_bg.svg'"
+          class="card__content--back position--absolute"
+          height="100"
           priority
+          width="100"
         />
       </div>
     </div>
   </div>
 </div>
 
-<p-dialog
-  header="Spiel gewonnen! Hurra!!!"
-  [(visible)]="gameService.gameEnded"
-  [style]="{ width: '60vw' }"
-  [breakpoints]="{ '960px': '80vw' }"
-  [draggable]="false"
-  [resizable]="false"
-  [position]="'top'"
->
-  <p>
-    Herzlichen Glückwunsch! Du hast {{ gameService.steps }} Züge benötigt. Jetzt
-    kannst du es noch einmal versuchen:
-  </p>
-  <ng-template pTemplate="footer">
-    <p-button label="Neues Spiel" (onClick)="startGame()"></p-button>
-  </ng-template>
-</p-dialog>
+<p-button
+  (click)="
+    highscoreService.showEndDialog(
+      Game.Memory,
+      10,
+      'Super Button!',
+      'Geschafft!'
+    )
+  "
+  label="Show Dialog"
+></p-button>
